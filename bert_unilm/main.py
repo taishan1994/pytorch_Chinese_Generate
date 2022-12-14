@@ -83,7 +83,7 @@ class BertForSeq2Seq:
                 global_step += 1
                 if global_step % eval_steps == 0:
 
-                    metrics = self.test(self.model, self.tokenizer, self.tmp_test_dataset, gen_max_len=50)
+                    metrics = self.test(self.model, self.tokenizer, self.tmp_test_dataset, gen_max_len=self.args.gen_max_len)
                     logger.info('=' * 100)
                     logger.info(metrics)
                     logger.info('=' * 100)
@@ -272,6 +272,16 @@ if __name__ == '__main__':
         tmp_test_dataset = random.sample(list(test_dataset), 100)  # 随机选择多少条数据
         print(tmp_test_dataset[0])
         # test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, collate_fn=collate.collate_fn)
+    elif data_name == "eb":
+        # 这里复用WeiboDataset，记得将data_loader.py里面if len(label) > 60:修改为if len(label) > 256:
+        # 同时将train()函数里面eval_steps设置为500
+        train_dataset = WeiboDataset(file_path='data/eb/train_data.json')
+        print(train_dataset[0])
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, collate_fn=collate.collate_fn)
+        test_dataset = WeiboDataset(file_path='data/eb/test_data.json')
+        tmp_test_dataset = test_dataset
+
+    bertForSeq2Seq = BertForSeq2Seq(args, train_loader, tmp_test_dataset, tokenizer, id2word, bert_seq2seq, device)
 
     bertForSeq2Seq = BertForSeq2Seq(args, train_loader, tmp_test_dataset, tokenizer, id2word, bert_seq2seq, device)
     # 训练
