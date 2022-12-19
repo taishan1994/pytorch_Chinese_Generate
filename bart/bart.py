@@ -113,7 +113,7 @@ if do_predict:
   tokenizer = BertTokenizer.from_pretrained("fnlp/bart-large-chinese")
   max_len = 24
 
-  方法一
+  # 方法一
   generator = pipeline('text2text-generation', model='results/checkpoint-3000/', tokenizer=tokenizer)
   for text, label in zip(texts, labels):
     print("上联：", text)
