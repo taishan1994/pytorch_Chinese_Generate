@@ -1,4 +1,4 @@
-这里记录的是另外一种方法,使用[UER-PY](https://github.com/dbiir/UER-py/wiki/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B)
+这里记录的是另外一种方法,使用[UER-py](https://github.com/dbiir/UER-py/wiki/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B)<br>
 数据可以去这里下载:git clone https://www.modelscope.cn/datasets/minisnow/couplet_samll.git
 ### 步骤
 1、下载UER-PY
